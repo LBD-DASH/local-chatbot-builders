@@ -1,6 +1,7 @@
 # STATUS (20 Nov 2026)
 
-- Live URL: https://lbd-dash.github.io/local-chatbot-builders/
+- Live URL: https://lbd-dash.github.io/local-chatbot-builders/ (LIVE: home, all 4 trade pages, FAQ, sitemap.xml and robots.txt return 200, checked 20 Nov 2026 16:41 SAST)
+- Pages enabled 20 Nov 2026 (source: GitHub Actions); deploy run https://github.com/LBD-DASH/local-chatbot-builders/actions/runs/44755413700 green.
 - Repo: https://github.com/LBD-DASH/local-chatbot-builders
 
 ## Pages shipped (12 built)
