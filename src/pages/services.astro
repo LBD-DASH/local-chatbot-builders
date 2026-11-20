@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import { allPartners, PARTNER_REL } from '../lib/partners';
+import { withBase } from '../lib/url';
+const platforms = allPartners().filter((p) => p.kind === 'platform');
+---
+<Base title="How it works: done-for-you FAQ and lead-capture chatbot" description="The Local Chatbot Builders process: you share your business details, approve the answers, and we set up a website chatbot that collects enquiries." path="services/">
+  <section class="hero"><div class="wrap"><span class="eyebrow">Services</span><h1>How it works</h1>
+  <p>One service: a website chatbot that answers your common questions and collects enquiries, set up for you.</p></div></section>
+  <div class="wrap"><div class="prose">
+    <h2>The steps</h2>
+    <ol>
+      <li><strong>Brief.</strong> You send your services, hours, location and policies.</li>
+      <li><strong>Draft.</strong> We write the FAQ answers and the questions the bot asks to collect an enquiry.</li>
+      <li><strong>Approve.</strong> You review every answer. The bot only uses approved answers.</li>
+      <li><strong>Set up.</strong> We configure the chatbot and give you the snippet to add to your website.</li>
+      <li><strong>Enquiries.</strong> Requests reach you in the channel we agree on.</li>
+    </ol>
+    <h2>What it is not</h2>
+    <ul>
+      <li>It does not take payments.</li>
+      <li>It does not give medical, legal, safety or repair advice.</li>
+      <li>It does not make promises about results.</li>
+    </ul>
+    <h2>Trades</h2>
+    <ul>
+      <li><a href={withBase('trades/salons/')}>Salons</a></li>
+      <li><a href={withBase('trades/plumbers/')}>Plumbers</a></li>
+      <li><a href={withBase('trades/clinics/')}>Clinics</a></li>
+      <li><a href={withBase('trades/restaurants/')}>Restaurants</a></li>
+    </ul>
+    <h2>Platform</h2>
+    <p>We have not yet chosen which chatbot platform to deliver on. These are under consideration, linked to their official sites. We have no affiliate relationship with any of them today.</p>
+    <ul>{platforms.map((p) => <li><a href={p.url} rel={PARTNER_REL} target="_blank">{p.name}</a></li>)}</ul>
+    <p><a class="btn" href={withBase('request-a-quote/')}>Request a quote</a></p>
+  </div></div>
+</Base>

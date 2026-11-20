@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+---
+<Base title="Request a quote for a business chatbot" description="Enquiries for Local Chatbot Builders open soon. Contact details are being finalised; this page will list how to request a quote." path="request-a-quote/">
+  <section class="hero"><div class="wrap"><span class="eyebrow">Request a quote</span><h1>Request a quote</h1></div></section>
+  <div class="wrap"><div class="prose">
+    <div class="notice"><strong>Enquiries open soon.</strong> Contact details are being finalised. Please check back shortly.</div>
+    <h2>What to have ready</h2>
+    <ul>
+      <li>Your trade and business name</li>
+      <li>Your website address</li>
+      <li>The questions customers ask you most</li>
+      <li>How you would like to receive enquiries</li>
+    </ul>
+    <p>Every quote is scoped to the individual business. No prices are listed on this site.</p>
+    <p><a href={withBase('services/')}>How it works</a> | <a href={withBase('faq/')}>FAQ</a></p>
+  </div></div>
+</Base>
