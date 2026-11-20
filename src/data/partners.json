@@ -1,0 +1,6 @@
+{
+  "_note": "Single source of truth for every outbound partner link. `url` is the plain official site. When a program approves us, paste the tracked link into `affiliateUrl` (the ONLY field to change). Leave `affiliateUrl` empty until approved. Never invent tracking IDs. Partner links render with rel=\"sponsored nofollow noopener\".",
+  "tidio": { "name": "Tidio", "kind": "platform", "blurb": "Chatbot platform. Under consideration; not yet chosen.", "url": "https://www.tidio.com/", "affiliateUrl": "" },
+  "botpress": { "name": "Botpress", "kind": "platform", "blurb": "Chatbot platform. Under consideration; not yet chosen.", "url": "https://botpress.com/", "affiliateUrl": "" },
+  "chatbase": { "name": "Chatbase", "kind": "platform", "blurb": "Chatbot platform. Under consideration; not yet chosen.", "url": "https://www.chatbase.co/", "affiliateUrl": "" }
+}
