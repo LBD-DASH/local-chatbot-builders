@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+const faq = [
+  { q: 'What is Local Chatbot Builders?', a: 'A done-for-you service that sets up a website chatbot for a local business. The bot answers common questions from information you approve and collects enquiries.' },
+  { q: 'Which businesses is it for?', a: 'We are starting with salons, plumbers, clinics and restaurants. More trades may follow.' },
+  { q: 'How much does it cost?', a: 'Pricing is by quote. Use the Request a quote page. No prices are listed on this site.' },
+  { q: 'Do I need technical skills?', a: 'No. We set the chatbot up and give you a snippet to add to your website, or help you add it.' },
+  { q: 'Can the chatbot give advice?', a: 'No. It answers admin and FAQ questions from approved answers and hands everything else to you. It never gives medical, legal, safety or repair advice.' },
+  { q: 'What happens when it does not know an answer?', a: 'It says so and offers to pass the question to you.' },
+  { q: 'Does it take payments?', a: 'No. It only collects enquiries.' },
+  { q: 'Do you have client results or reviews?', a: 'Not yet. We are at an early stage and make no claims about results.' },
+  { q: 'How do I get in touch?', a: 'Enquiries open soon and contact details are being finalised. See the Request a quote page.' },
+];
+const jsonLd = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }];
+---
+<Base title="FAQ: business chatbot service" description="Answers to common questions about Local Chatbot Builders: what the chatbot does, who it is for, how quotes work and what it will not do." path="faq/" jsonLd={jsonLd}>
+  <section class="hero"><div class="wrap"><span class="eyebrow">FAQ</span><h1>Frequently asked questions</h1></div></section>
+  <div class="wrap"><div class="prose">
+    {faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+  </div></div>
+</Base>

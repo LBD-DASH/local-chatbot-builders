@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { withBase } from '../lib/url';
+const trades = (await getCollection('trades')).sort((a, b) => a.data.trade.localeCompare(b.data.trade));
+---
+<Base title="Done-for-you FAQ and lead-capture chatbots for local businesses" description="Local Chatbot Builders sets up a website chatbot that answers your customers' common questions and collects enquiries. Request a quote." path="">
+  <section class="hero"><div class="wrap">
+    <span class="eyebrow">Done for you</span>
+    <h1>A chatbot for your website that answers the usual questions and collects enquiries</h1>
+    <p>We build and set up an FAQ and lead-capture chatbot for local businesses, using the answers you approve. You do not need to learn any software.</p>
+    <p><a class="btn" href={withBase('request-a-quote/')}>Request a quote</a></p>
+  </div></section>
+  <div class="wrap">
+    <h2>Pick your trade</h2>
+    <div class="grid">
+      {trades.map((t) => (
+        <a class="card" href={withBase(`trades/${t.id}/`)} style="text-decoration:none;color:inherit">
+          <h3>{t.data.trade}</h3>
+          <p class="small muted">{t.data.summary}</p>
+          <span>See the {t.data.trade.toLowerCase()} chatbot</span>
+        </a>
+      ))}
+    </div>
+    <h2>How it works</h2>
+    <ol>
+      <li>You tell us about your business.</li>
+      <li>We draft the answers and enquiry questions. You approve them.</li>
+      <li>We set it up and give you the snippet for your website.</li>
+      <li>Enquiries reach you in the channel we agree on.</li>
+    </ol>
+    <p><a href={withBase('services/')}>Read the full process</a></p>
+    <div class="notice"><strong>Early stage.</strong> We have no client results, reviews or case studies to show yet, so this site makes no claims about outcomes. Prices are given by quote only.</div>
+  </div>
+</Base>

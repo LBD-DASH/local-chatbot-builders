@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { allPartners } from '../lib/partners';
+const anyAffiliate = allPartners().some((p) => p.affiliate);
+---
+<Base title="Disclosure: partners and affiliate links" description="Local Chatbot Builders discloses any partner or affiliate relationship. Today there are none, and any future ones will be labelled on the page." path="disclosure/">
+  <section class="hero"><div class="wrap"><span class="eyebrow">Disclosure</span><h1>Disclosure</h1></div></section>
+  <div class="wrap"><div class="prose">
+    {anyAffiliate
+      ? <p>Some links on this site are affiliate links. We may earn a commission if you sign up, at no extra cost to you.</p>
+      : <p>We have no affiliate relationship with any company linked from this site today. Links to chatbot platforms go to their official sites.</p>}
+    <p>If that changes, the links will be marked and this page updated. Partner links are managed in one place and carry rel="sponsored nofollow noopener".</p>
+    <p>Last updated 20 Nov 2026.</p>
+  </div></div>
+</Base>
