@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { withBase, absUrl } from '../../lib/url';
+export async function getStaticPaths() {
+  const trades = await getCollection('trades');
+  return trades.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: absUrl('', Astro.site) },
+    { '@type': 'ListItem', position: 2, name: d.trade, item: absUrl(`trades/${entry.id}/`, Astro.site) } ] },
+];
+---
+<Base title={d.title} description={d.description} path={`trades/${entry.id}/`} jsonLd={jsonLd}>
+  <section class="hero"><div class="wrap">
+    <span class="eyebrow">{d.trade}</span>
+    <h1>{d.title}</h1>
+    <p>{d.summary}</p>
+    <p><a class="btn" href={withBase('request-a-quote/')}>Request a quote</a></p>
+  </div></section>
+  <div class="wrap"><div class="prose">
+    <h2>Questions it can answer</h2>
+    <p class="muted small">Typical questions for this trade. The real list is written with you.</p>
+    <ul>{d.commonQuestions.map((q) => <li>{q}</li>)}</ul>
+    <h2>What it collects for a quote or booking request</h2>
+    <ul>{d.leadFields.map((q) => <li>{q}</li>)}</ul>
+    <h2>When it hands over to you</h2>
+    <p>{d.handoff}</p>
+    <Content />
+    <h2>Questions about this service</h2>
+    {d.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+    <p><a class="btn" href={withBase('request-a-quote/')}>Request a quote</a></p>
+    <p class="small muted">Page last updated {d.lastUpdated.toISOString().slice(0, 10)}. Describes the service we plan to deliver; no results are claimed.</p>
+  </div></div>
+</Base>
